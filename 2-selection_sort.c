@@ -1,4 +1,5 @@
 #include "sort.h"
+void swap(int *a, int *b);
 /**
 * selection_sort - sorts using the selection algorithm
 * @array: array to be sorted
@@ -8,17 +9,29 @@ void selection_sort(int *array, size_t size)
 {
 	size_t ind, chk, swp;
 
-	for (ind = 0; ind < size; ind++)
+	for (ind = 0; ind < size - 1; ind++)
 	{
+		swp = ind;
 		for (chk = ind + 1; chk < size; chk++)
 		{
-			if (array[ind] > array[chk])
+			if (array[chk] < array[swp])
 			{
-				swp = array[ind];
-				array[ind] = array[chk];
-				array[chk] = swp;
+				swp = chk;
 			}
 		}
+		swap(&array[swp], &array[ind]);
 		print_array(array, size);
 	}
+}
+/**
+*
+*
+*
+*
+*/
+void swap(int *a, int *b)
+{
+	int tmp = *a;
+	*a = *b;
+	*b = tmp;
 }
