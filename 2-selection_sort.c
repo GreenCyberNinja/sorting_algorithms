@@ -7,27 +7,32 @@ void swap(int *a, int *b);
 */
 void selection_sort(int *array, size_t size)
 {
-	size_t ind, chk, swp;
+	size_t i, swp, j;
+	int chk;
 
-	for (ind = 0; ind < size - 1; ind++)
+	for (i = 0; i < size - 1; i++)
 	{
-		swp = ind;
-		for (chk = ind + 1; chk < size; chk++)
+		chk = array[i];
+		swp = 0;
+		for (j = i + 1; j < size; j++)
 		{
-			if (array[chk] < array[swp])
+			if (array[j] < chk)
 			{
-				swp = chk;
+				chk = array[j];
+				swp = j;
 			}
 		}
-		swap(&array[swp], &array[ind]);
-		print_array(array, size);
+		if (swp > 0)
+		{
+			swap(&array[swp], &array[i]);
+			print_array(array, size);
+		}
 	}
 }
 /**
-*
-*
-*
-*
+* swap - swaps a and b
+* @a: to swap with b
+* @b: to swap with a
 */
 void swap(int *a, int *b)
 {
