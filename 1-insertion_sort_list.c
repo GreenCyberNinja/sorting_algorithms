@@ -8,6 +8,9 @@ void insertion_sort_list(listint_t **list)
 	listint_t  *nav = *list;
 	listint_t *tmp, *after, *before;
 
+	if (list == NULL)
+		return;
+
 	while (nav)
 	{
 		nav = nav->next;
